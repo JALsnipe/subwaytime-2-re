@@ -1,0 +1,104 @@
+<ion-view view-title="Subway Times">
+    <ion-content>
+
+
+<!-- <div class="bar bar-loading bar-assertive" ng-if="downloading">
+      Loading...
+    </div> -->
+        <div class="card" ng-show="serverError && !isOffline "> 
+
+            <div class="card">
+                <div class="item item-divider item-icon-left bar bar-energized" style="background-color: #f6a704;"> 
+                <i class="icon ion-android-alert"></i>
+                Data is not available
+            </div>
+            <div class="list card item-text-wrap">
+                The data is not available at this time. <br>
+                Please try again later.
+            </div>
+            </div>
+
+        </div> 
+      <!-- loading -->
+       <div class="spinner" ng-show="downloading && !isOffline "> 
+            <ion-spinner icon="circles" class="m-spinner spinner-energized"></ion-spinner> 
+            <!-- <p style="color: red; font-weight: bold;"  >Loading...</p>-->
+        </div> 
+      <!-- Network -->
+        <div  class="spinner" ng-show="isOffline">
+            <img src="img/noNetwork.png" style="display:block; margin:auto;">        
+        </div>
+        
+            <div  ng-if="subwayTime.message.errorCode > 0 && !isOffline && !serverError">
+               <!--  <div class="item">
+                    {{subwayTime.stationName}}
+                    <span class="item-note">
+                        {{subwayTime.lastUpdatedTime}}
+                    </span>
+                </div> -->
+                <!-- <div class="item item-divider item-text-wrap">
+                    <i class="icon ion-alert-circled"></i> {{subwayTime.message.message}}
+                </div> -->
+                <div class="card">
+                    <div class="item item-text-wrap">
+                    Error: <br>
+                        <i class="icon ion-alert-circled"></i> {{subwayTime.message.message}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div ng-if="(subwayTime.message.errorCode == 0 || subwayTime.message.errorCode == 1) && !isOffline  && !serverError">
+                <div class="item">
+                    {{subwayTime.stationName}}
+                    <span class="item-note">
+                        {{subwayTime.lastUpdatedTime}}
+                    </span>
+                </div>
+                <div class="item item-divider">
+                    {{subwayTime.direction1.name}}
+                </div>
+                <ion-list>
+                    <ion-item class="item row" ng-repeat="item in subwayTime.direction1.times">
+                        <div ng-if="item.route == 'SI'" class="col-10 padding">
+                            <img ng-src="img/SIR_sm.png"/>
+                        </div>
+                        <div ng-if="item.route != 'SI'" class="col-10 padding">
+                            <img ng-src="img/{{item.route}}_sm.png" alt=""/>
+                        </div>
+                        <div class="col padding item-note">
+                            {{item.lastStation}}
+                        </div>
+                        <div class="col-20 padding">
+                            {{item.minutes}} min
+                        </div>
+                    </ion-item>
+                </ion-list>
+
+                <div class="item item-divider">
+                    {{subwayTime.direction2.name}}
+                </div>
+                <ion-list>
+                    <ion-item class="item row" ng-repeat="item in subwayTime.direction2.times">
+                        <div ng-if="item.route == 'SI'" class="col-10 padding">
+                            <img ng-src="img/SIR_sm.png"/>
+                        </div>
+                        <div ng-if="item.route != 'SI'" class="col-10 padding">
+                            <img ng-src="img/{{item.route}}_sm.png" alt=""/>
+                        </div>
+                        <div class="col padding item-note">
+                            {{item.lastStation}}
+                        </div>
+                        <div class="col-20 padding">
+                            {{item.minutes}} min
+                        </div>
+                    </ion-item>
+                </ion-list>
+            <div>
+
+     <!--    </div> -->
+
+
+
+    </ion-content>
+</ion-view>

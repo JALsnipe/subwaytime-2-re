@@ -1,0 +1,109 @@
+<ion-view view-title="Legend">
+    <ion-content>
+<ion-item ng-switch="{{l}}" >
+        <ion-item class="item-icon-left item-text-wrap" ng-if="l!= 'S'"><i class="icon ion-ios-circle-filled"></i>
+          
+                        <h2>
+                            FULL-TIME 
+                        </h2>
+                        <p>
+                            Train always operates and always stops here.
+                        </p>
+             
+        </ion-item>
+
+
+
+                            
+                    <i ng-switch-when="2" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-moon"></i>
+                       <h2>  NIGHT SERVICE </h2>
+                        Train stops at this station nighttime hours only.
+                         </ion-item>  
+                    </i>
+
+
+                    <i ng-switch-when="3" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-circle-outline"></i>
+                       <h2>  PART-TIME </h2>
+                        Train does not always operate or sometimes skips this station. (no trains 11:30 pm to 6 am )
+                         </ion-item>  
+                    </i>
+
+
+
+                    <i ng-switch-when="4" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-circle-outline"></i>
+                       <h2>  PART-TIME</h2>
+                            Does not stop Rush Hours (peak direction). 7-9 am and 4:45-6:20 pm
+                         </ion-item>  
+
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-moon"></i>
+                       <h2>  NIGHT SERVICE </h2>
+                            Train stops at this station nighttime hours only.</br>
+                            1 am to 5 am Manhattan</br>
+                            11 pm - 6 am Brooklyn</br>
+                         </ion-item>  
+                    </i>
+
+                    <i ng-switch-when="5" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-circle-outline"></i>
+                       <h2>  PART-TIME </h2>
+                            Train does not always operate or sometimes skips this station
+                         </ion-item>  
+
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon">  <img ng-src="img/rushHour.jpg"></i>
+                       <h2>  RUSH HOUR ONLY </h2>
+                            Train operates in one direction (to Manhattan AM Rush Hour, from Manhattan PM Rush Hour).
+                         </ion-item>  
+                    </i>
+
+
+                     <i ng-switch-when="6" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon">  <img ng-src="img/rushHour.jpg"></i>
+                        <h2>   Stops Weekdays, Peak Direction</h2>
+                                To Manhattan 6:20am - 12:30pm</br>
+                                From Manhattan 1pm - 8:45pm only
+                        </ion-item> 
+                    </i>
+
+                  <i ng-switch-when="S" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-circle-outline"></i>
+                       <h2>  PART-TIME </h2>
+                            Train does not always operate or sometimes skips this station
+                         </ion-item>  
+
+                     
+                    </i>
+
+                    <i ng-switch-when="L" >
+                     
+                    </i>
+
+                    <i ng-switch-default="R" >
+                        <ion-item class="item-icon-left item-text-wrap">  
+                        <i  class="icon ion-ios-circle-outline"></i>
+                       <h2>  PART-TIME </h2>
+                            Train does not always operate or sometimes skips this station.
+                            (No late service 11pm to5:30am )
+                         </ion-item>  
+
+                     
+                    </i>
+
+
+                            
+
+        </ion-item>
+
+           
+    </ion-content>
+</ion-view>

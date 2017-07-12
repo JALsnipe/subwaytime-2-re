@@ -1,0 +1,24 @@
+<ion-view view-title="Favorites">
+    <ion-content>
+
+        <ion-list>
+            <ion-item class="item-icon-left item-icon-right" can-swipe="listCanSwipe" ng-repeat="item in favList" ng-switch="{{item.type}}" href="#/app/subwaytime/{{item.lineID}}/{{item.stationId}}" >
+                
+                <i ng-switch-when="0" style="background-color: {{item.color}};" class="icon ion-ios-circle-filled"></i>
+                <i ng-switch-when="1" style="background-color: {{item.color}};" class="icon ion-ios-circle-outline"></i>
+                <i ng-switch-default="2" style="background-color: {{item.color}};" class="icon ion-ios-moon"></i>
+                
+                <img class="col-33" ng-src="{{item.lineImage}}" alt="Subway-Line-Icon"/>
+
+                {{ item.station }}
+                
+                <ion-option-button class="button-assertive" ng-click="delete('{{item.stationId}}')"><i class="icon ion-ios-trash"></i>
+                </ion-option-button>
+
+                <i class="icon ion-ios-arrow-right">
+                </i>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

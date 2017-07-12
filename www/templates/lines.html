@@ -1,0 +1,55 @@
+<ion-view view-title="MTA Subway Time">
+    <ion-content>
+
+
+<!-- <div class="bar bar-loading bar-assertive" ng-if="downloading">
+      Loading...
+    </div> -->
+    
+        <div class="card" ng-show="serverError && !isOffline "> 
+
+            <div class="card">
+                <div class="item item-divider item-icon-left bar bar-energized" style="background-color: #f6a704;"> 
+                <i class="icon ion-android-alert"></i>
+                Data is not available
+            </div>
+            <div class="list card item-text-wrap">
+                The data is not available at this time. <br>
+                Please try again later.
+            </div>
+            </div>
+
+        </div> 
+      <!-- loading -->
+       <div class="spinner" ng-show="downloading && !isOffline "> 
+             <ion-spinner icon="circles" class="m-spinner spinner-energized"></ion-spinner> 
+        </div> 
+      <!-- Network -->
+        <div  class="spinner" ng-show="isOffline">
+            <img src="img/noNetwork.png" style="display:block; margin:auto;">        
+        </div>
+        
+
+    	<div ng-hide="downloading || isOffline || serverError " ng-repeat="line in lineList" ng-if="$index % 3 == 0" class="row">
+            <div class="col-33">
+                <a href="#/app/stations/{{lineList[$index].id}}">
+                    <img class="padding" ng-src="{{lineList[$index].lineImage}}"/>
+                </a>
+            </div>
+            <div class="col-33" ng-if="lineList.length >($index + 1)">
+                <a href="#/app/stations/{{lineList[$index + 1].id}}">
+                    <img class="padding" ng-src="{{lineList[$index + 1].lineImage}}"/>
+                </a>
+            </div>
+            <div class="col-33" ng-if="lineList.length >($index + 2)">
+                <a href="#/app/stations/{{lineList[$index + 2].id}}">
+                    <img class="padding" ng-src="{{lineList[$index + 2].lineImage}}"/>
+                </a>
+            </div>
+        </div>
+
+
+ 
+
+        </ion-content>
+    </ion-view>

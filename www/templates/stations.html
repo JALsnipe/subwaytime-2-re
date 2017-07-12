@@ -1,0 +1,105 @@
+<ion-view view-title="Select Station">
+    <ion-content>
+
+
+<!-- <div class="bar bar-loading bar-assertive" ng-if="downloading">
+      Loading...
+    </div> -->
+        <div class="card" ng-show="serverError && !isOffline "> 
+
+            <div class="card">
+                <div class="item item-divider item-icon-left bar bar-energized" style="background-color: #f6a704;"> 
+                <i class="icon ion-android-alert"></i>
+                Data is not available
+            </div>
+            <div class="list card item-text-wrap">
+                The data is not available at this time. <br>
+                Please try again later.
+            </div>
+            </div>
+
+        </div> 
+      <!-- loading -->
+       <div class="spinner" ng-show="downloading && !isOffline "> 
+            <ion-spinner icon="circles" class="m-spinner spinner-energized"></ion-spinner> 
+            <!-- <p style="color: red; font-weight: bold;"  >Loading...</p>-->
+        </div> 
+      <!-- Network -->
+        <div  class="spinner" ng-show="isOffline">
+            <img src="img/noNetwork.png" style="display:block; margin:auto;">        
+        </div>
+        
+
+        <div ng-hide="downloading || isOffline || serverError">
+            <img style="padding: 5px;" ng-src="img/{{l}}.png" alt=""/>
+            <div ng-hide="downloading && !isOffline && serverError " style="float: right; margin: 3px 10px 0 0;">
+            
+        
+                <a href="#/app/legend/{{l}}"  >
+                    <button class="button button-dark"> 
+                        Legend</button>
+                </a>
+
+
+
+                
+            </div>
+            <div ng-hide="downloading && !isOffline && serverError" style="float: right; margin: 3px 10px 0 0;" ng-if="advisory_status != '' && advisory_status != null">
+                <a href="#/app/advisories/{{l}}">
+                    <button class="button button-assertive">{{advisory_status}}</button>
+                    
+                </a>
+            </div>
+
+   <!--      </div>
+        
+            
+        
+
+        <ion-list ng-hide="downloading || !isOffline"> -->
+            <div ng-hide="downloading && !isOffline && serverError " class=" item-input-inset" style="width: 100% !important;">
+                 <input type="text" placeholder=" Search" ng-model="search.name" 
+                  style="width: 100% !important; padding-left:10px;"  />
+            </div>
+
+            <div  class="card" ng-repeat="item in stationList" ng-show="filteredItems.length">
+                <ion-item class="item-divider" >{{item.borough}}</ion-item>
+
+      
+                <div  ng-repeat="station in item.stations | filter:search as filteredItems" class="custom-class-divider">
+                        <ion-item ng-switch="{{station.type}}" ng-if="station.status > 0 || station.status == null" href="#/app/subwaytime/{{l}}/{{station.id}}" class="item-icon-left item-icon-right">
+                            <i ng-switch-when="0" style="background-color: {{item.color}};" class="icon ion-ios-circle-filled"></i>
+                            <i ng-switch-when="1" style="background-color: {{item.color}};" class="icon ion-ios-circle-outline"> </i>
+                            <i ng-switch-when="2" style="background-color: {{item.color}};" class="icon ion-ios-moon"></i>
+                            <i ng-switch-default="3" style="background-color: {{item.color}}; width:32px;padding:5px" class="icon"><img ng-src="img/rushHour.gif"></i>
+                            {{station.name}}
+                            <i class="icon ion-ios-arrow-right"></i>
+                          <!--   <ion-option-button class="button-positive" ng-click="addFavorite({{l}}, {{station.id}})">
+                                <i class="icon ion-ios-star-outline"></i>
+                            </ion-option-button> -->
+                        </ion-item>
+
+                        <ion-item ng-switch="{{station.type}}" ng-if="station.status < 0" class="item-icon-left " style="background-color: #d3d3d3">
+                            <i ng-switch-when="0" style="background-color: {{item.color}};" class="icon ion-ios-circle-filled"></i>
+                            <i ng-switch-when="1" style="background-color: {{item.color}};" class="icon ion-ios-circle-outline"> </i>
+                            <i ng-switch-when="2" style="background-color: {{item.color}};" class="icon ion-ios-moon"></i>
+                            <i ng-switch-default="3" style="background-color: {{item.color}}; width:32px;padding:5px" class="icon"><img ng-src="img/rushHour.gif"></i>
+                            {{station.name}} : <i style="color:red">Closed</i>  
+                            <!-- <ion-option-button class="button-positive" ng-click="addFavorite({{l}}, {{station.id}})">
+                                <i class="icon ion-ios-star-outline"></i>
+                            </ion-option-button> -->
+                        </ion-item>
+                </div>
+
+            </div>
+        </ion-list>
+
+
+
+
+            
+
+     
+
+    </ion-content>
+</ion-view>
