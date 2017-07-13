@@ -1,25 +1,6 @@
-Ionic App Base
+MTA SubwayTime Reverse Engineered
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+This is an attempt to repackage the MTA SubwayTime app into a runnable Cordova project.  I've pulled the www folder from the App Store ipa file and have added the necessary plugins to build the app.  Just run `ionic cordova run ios` to install all packages and run the app in the iOS simulator.
 
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic
-```
-
-Then run: 
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+I've also included the 1.x and 2.x ipa files in this repo with the DRM stripped with Clutch for reference.
